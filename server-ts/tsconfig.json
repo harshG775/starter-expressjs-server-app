@@ -7,13 +7,31 @@
         "sourceMap": true,
         "outDir": "./build",
         "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
-        "skipLibCheck": true
+
+        /* Bundler mode */
+        "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+
+        /* Advanced Options */
+        "skipLibCheck": true /* Skip type checking of declaration files. */,
+        "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "useUnknownInCatchVariables": false
     },
     "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "dist"]
 }
