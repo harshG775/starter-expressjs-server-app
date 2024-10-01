@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { asyncHandler } from "../../utils/asyncHandler";
+import { asyncHandler } from "@/utils/asyncHandler";
 
 type ErrorDetails = {
     message: string;

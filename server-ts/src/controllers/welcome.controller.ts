@@ -1,6 +1,6 @@
 import { Response } from "express";
-import { asyncHandler } from "../utils/asyncHandler";
-import responseStatus from "../utils/responseStatus";
+import { asyncHandler } from "@/utils/asyncHandler";
+import responseStatus from "@/utils/responseStatus";
 
 export const welcome = asyncHandler(async (res: Response) => {
     responseStatus.ok(res, {
