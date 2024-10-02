@@ -1,4 +1,6 @@
 import winston from "winston";
+import dotenv from "dotenv";
+dotenv.config();
 /**
  * Winston logger instance configured for the application.
  * Logs to console and file with different levels based on the environment.
