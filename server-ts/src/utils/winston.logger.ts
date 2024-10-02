@@ -1,5 +1,8 @@
 import winston from "winston";
-
+/**
+ * Winston logger instance configured for the application.
+ * Logs to console and file with different levels based on the environment.
+ */
 const logger = winston.createLogger({
     level: "info",
     format: winston.format.combine(
