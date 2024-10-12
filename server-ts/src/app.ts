@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { config } from "./constants/config";
-import { errorHandler, notFound } from "./middleware/error/errorHandling";
+import { notFound } from "./middleware/error/errorHandling";
 import cookieParser from "cookie-parser";
 import { loggerMiddleware } from "./middleware/loggerMiddleware";
 
@@ -22,10 +22,8 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(loggerMiddleware);
 
-// Error handling
-app.use(notFound);
-app.use(errorHandler);
 
 app.use("/api/", welcomeRoute);
+app.use("*", notFound);
 
 export default app;
