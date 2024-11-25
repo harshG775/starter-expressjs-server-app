@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { asyncHandler } from "@/utils/asyncHandler";
+import HttpStatusCodes from "@/common/HttpStatusCodes";
 
 type ErrorDetails = {
     message: string;
@@ -42,5 +43,5 @@ export const errorHandler = (err: AppError, req: Request, res: Response, next: N
 };
 
 export const notFound = asyncHandler(async (req: Request) => {
-    throw new AppError(`Not Found - ${req.originalUrl}`, 404);
+    throw new AppError(`route Not Found - ${req.originalUrl} `, HttpStatusCodes.NOT_FOUND);
 });

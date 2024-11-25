@@ -1,8 +1,6 @@
 import HttpStatusCodes from "@/common/HttpStatusCodes";
 import { Response } from "express";
-import { Readable } from "stream";
-
-interface ResponseData {
+type ResponseData =  {
     [key: string]: any;
 }
 
@@ -22,12 +20,6 @@ const responseStatus = {
     serverError: (res: Response, message: string = "Internal Server Error") => res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ success: false, message }),
 
     message: (res: Response, statusCode: number, message: string) => res.status(statusCode).json({ message }),
-    
-    streamPipe: (res: Response, stream: Readable, statusCode: number = HttpStatusCodes.OK, contentType: string = "application/octet-stream") => {
-        res.status(statusCode);
-        res.setHeader("Content-Type", contentType);
-        stream.pipe(res);
-    },
 };
 
 export default responseStatus;
