@@ -2,13 +2,13 @@
     "name": "express-typescript-starter",
     "version": "1.0.0",
     "description": "A starter template for Express.js with TypeScript",
-    "main": "src/main.ts",
+    "main": "src/index.ts",
     "engines": {
         "node": ">=18.0.0"
     },
     "scripts": {
-        "start": "ts-node dist/main.js",
-        "dev": "nodemon src/main.ts",
+        "start": "ts-node dist/index.js",
+        "dev": "nodemon src/index.ts",
         "build": "tsc",
         "lint": "eslint ."
     },
