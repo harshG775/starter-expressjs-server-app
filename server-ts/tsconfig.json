@@ -1,36 +1,19 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
+        "target": "es2022",
         "module": "commonjs",
+        "outDir": "./dist",
         "rootDir": "./src",
-        "types": ["node", "dotenv"],
-        "sourceMap": true,
-        "outDir": "./build",
-        "esModuleInterop": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-
-        /* Bundler mode */
-        "allowImportingTsExtensions": true,
-        "isolatedModules": true,
-        "moduleDetection": "force",
-        "noEmit": true,
-
-        /* Linting */
         "strict": true,
-        // "noUnusedLocals": true,
-        // "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
 
-        /* Advanced Options */
-        "skipLibCheck": true /* Skip type checking of declaration files. */,
-        "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
         "baseUrl": "./",
         "paths": {
             "@/*": ["./src/*"]
         },
-        "useUnknownInCatchVariables": false
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "dist"],
