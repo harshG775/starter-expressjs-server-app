@@ -6,9 +6,9 @@ import { config } from "./constants/config";
 import { notFound } from "./middleware/error/errorHandling";
 import cookieParser from "cookie-parser";
 import { loggerMiddleware } from "./middleware/loggerMiddleware";
+import healthRouter from "./routes/health.routes";
 
 // routes import
-import healthRoutes from "./routes/health.routes";
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(loggerMiddleware);
 
-app.use("/health", healthRoutes);
+app.use("/health", healthRouter);
 app.use("*", notFound);
 
 export default app;
