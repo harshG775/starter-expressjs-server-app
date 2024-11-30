@@ -1,4 +1,4 @@
-import HttpStatusCodes from "@/common/HttpStatusCodes";
+import HttpStatusCodes from "../common/HttpStatusCodes";
 import { Response } from "express";
 type ResponseData =  {
     [key: string]: any;

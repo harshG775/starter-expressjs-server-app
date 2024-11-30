@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { asyncHandler } from "@/utils/asyncHandler";
-import HttpStatusCodes from "@/common/HttpStatusCodes";
+import { asyncHandler } from "../../utils/asyncHandler";
+import HttpStatusCodes from "../../common/HttpStatusCodes";
 
 type ErrorDetails = {
     message: string;
