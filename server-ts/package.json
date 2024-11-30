@@ -2,15 +2,22 @@
     "name": "express-typescript-starter",
     "version": "1.0.0",
     "description": "A starter template for Express.js with TypeScript",
-    "main": "dist/index.js",
+    "main": "src/main.ts",
+    "engines": {
+        "node": ">=18.0.0"
+    },
     "scripts": {
-        "start": "node dist/index.js",
-        "dev": "nodemon src/index.ts",
+        "start": "ts-node src/main.ts",
+        "dev": "nodemon src/main.ts",
         "build": "tsc",
         "lint": "eslint ."
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/harshG775/starter-expressjs-server-app.git"
+    },
     "keywords": [],
-    "author": "",
+    "author": "harshG775",
     "license": "ISC",
     "dependencies": {
         "bcrypt": "^5.1.1",
