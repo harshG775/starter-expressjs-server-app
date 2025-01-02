@@ -12,4 +12,3 @@ const run = async () => {
 };
 
 run();
-console.log(env)
