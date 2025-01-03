@@ -1,16 +1,33 @@
 {
     "compilerOptions": {
-        "target": "es2022",
-        "module": "commonjs",
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "strict": true,
+        "target": "ESNext",
+        "module": "CommonJS",
         "esModuleInterop": true,
-        "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node"
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
+        "strict": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "removeComments": true,
+        "noImplicitAny": true,
+        "paths": {
+            "@/*": ["*"]
+        },
+        "baseUrl": "./src",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "lib": ["ESNext"],
+        "types": ["node"],
+        "typeRoots": ["./src/@types", "./node_modules/@types"]
     },
-    "include": ["src/**/*", "dist"],
+    "include": ["src/**/*"],
     "exclude": ["node_modules"],
-    "typeRoots": ["./node_module/@types", "./src/@types"]
+    "ts-node": {
+        "require": ["tsconfig-paths/register"]
+    }
 }
