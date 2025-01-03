@@ -1,4 +1,11 @@
+# Dependencies
 node_modules
+
+# Environment variables
 .env
+
+# Build output
 dist
-package.lock.json
+
+# Dependency lock file (optional to ignore)
+package-lock.json
