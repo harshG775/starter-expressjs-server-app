@@ -1,1 +1,1 @@
-export { env } from "@/constants/env";
+export { env } from "./env";

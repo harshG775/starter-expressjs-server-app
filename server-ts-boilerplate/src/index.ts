@@ -1,6 +1,6 @@
 import "dotenv/config";
-import app from "@/app";
-import _ from "@/@types/global";
+import app from "./app";
+import _ from "./@types/global.d";
 import { env } from "./constants";
 const run = async () => {
     try {

@@ -1,7 +1,7 @@
 // imports
 import express, { Express } from "express";
-import { corsMiddleware } from "@/middlewares/index";
-import { router } from "@/routes/index";
+import { corsMiddleware } from "./middlewares/index";
+import { router } from "./routes/index";
 
 // variables
 const app: Express = express();

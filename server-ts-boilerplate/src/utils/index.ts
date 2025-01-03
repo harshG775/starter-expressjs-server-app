@@ -1,1 +1,1 @@
-export { to } from "@/utils/awaitTo";
+export { to } from "./awaitTo";
