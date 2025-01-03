@@ -3,11 +3,7 @@
     "builds": [
         {
             "src": "src/index.ts",
-            "use": "@vercel/node",
-            "config": {
-                "installCommand": "npm install",
-                "buildCommand": "npm run clean:dist && tsc && tsc-alias && npm run copy:files"
-            }
+            "use": "@vercel/node"
         }
     ],
     "routes": [
