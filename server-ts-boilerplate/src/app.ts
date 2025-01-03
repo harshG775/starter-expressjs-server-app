@@ -1,6 +1,6 @@
 // imports
 import express, { Express } from "express";
-import { corsMiddleware } from "./middlewares/index";
+import { corsMiddleware, notFoundMiddleware } from "./middlewares/index";
 import { router } from "./routes/index";
 
 // variables
@@ -13,7 +13,9 @@ app.use(
     express.urlencoded({ extended: true }),
     
     // routes 
-    router
+    router,
+    notFoundMiddleware
+
 );
 
 // exports
