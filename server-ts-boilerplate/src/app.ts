@@ -1,22 +1,18 @@
 // imports
 import express, { Express } from "express";
-import { corsMiddleware, notFoundMiddleware } from "./middlewares/index";
+import { corsMiddleware, errorHandlerMiddleware, notFoundMiddleware } from "./middlewares/index";
 import { router } from "./routes/index";
 
 // variables
 const app: Express = express();
 
-app.use(
-    // middlewares
-    corsMiddleware,
-    express.json({ limit: "10mb" }),
-    express.urlencoded({ limit: "10mb", extended: true }),
-    express.urlencoded({ extended: true }),
+// middlewares
+app.use(corsMiddleware);
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
-    // routes
-    router,
-    notFoundMiddleware
-);
-
+app.use(router); // routes
 // exports
 export default app;

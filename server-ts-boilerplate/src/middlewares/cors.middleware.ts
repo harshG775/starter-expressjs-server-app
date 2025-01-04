@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import cors from "cors";
-import { env } from "@/constants";
+import { env } from "../constants";
+import { ResponseError } from "../error/index";
 
 export const corsMiddleware = cors({
     origin: (origin, callback) => {
@@ -17,7 +18,7 @@ export const corsMiddleware = cors({
         if (isAllowed) {
             callback(null, true);
         } else {
-            callback(new Error(`Origin ${origin} not allowed by CORS`));
+            callback(new ResponseError(`Origin ${origin} not allowed by CORS`, StatusCodes.FORBIDDEN));
         }
     },
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
