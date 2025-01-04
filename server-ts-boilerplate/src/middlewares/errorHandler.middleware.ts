@@ -1,4 +1,4 @@
-import { ResponseError } from "../error/index";
+import { ResponseError } from "../exception/index";
 import { Request, Response, NextFunction } from "express";
 
 export function errorHandlerMiddleware(err: ResponseError, _req: Request, res: Response, _next: NextFunction) {
