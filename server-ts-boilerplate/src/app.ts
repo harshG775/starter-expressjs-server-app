@@ -10,12 +10,12 @@ app.use(
     // middlewares
     corsMiddleware,
     express.json({ limit: "10mb" }),
+    express.urlencoded({ limit: "10mb", extended: true }),
     express.urlencoded({ extended: true }),
-    
-    // routes 
+
+    // routes
     router,
     notFoundMiddleware
-
 );
 
 // exports

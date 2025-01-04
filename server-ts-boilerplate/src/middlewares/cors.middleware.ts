@@ -10,16 +10,21 @@ export const corsMiddleware = cors({
         }
 
         // Allow only origins in the whitelist
-        const isAllowed = env.server.corsWhitelist.some(
+        const isAllowed = env.server.originsWhitelist.some(
             (allowedOrigin) => new URL(allowedOrigin).origin === new URL(origin).origin
         );
 
         if (isAllowed) {
             callback(null, true);
         } else {
-            console.error(`Blocked CORS request from origin: ${origin}`);
             callback(new Error(`Origin ${origin} not allowed by CORS`));
         }
     },
-    optionsSuccessStatus: StatusCodes.OK,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: ["Content-Type", "Authorization", "Accept-Version"],
+    exposedHeaders: ["X-Total-Count", "Content-Range"],
+    credentials: true,
+    preflightContinue: false,
+    maxAge: 600,
+    optionsSuccessStatus: StatusCodes.NO_CONTENT,
 });
