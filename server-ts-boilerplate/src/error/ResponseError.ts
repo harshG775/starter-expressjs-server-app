@@ -8,19 +8,25 @@ type ParamsType = {
     context?: { [key: string]: any };
 };
 export class ResponseError extends CustomError {
-    readonly statusCode: number;
-    readonly errors: CustomErrorContent[];
-    readonly logging: boolean;
-    readonly context: { [key: string]: any };
+    private readonly _statusCode: number;
+    private readonly _logging: boolean;
+    private readonly _context: { [key: string]: any };
 
-    constructor({ message = "Bad request", statusCode = 400, logging = false, context = {} }: ParamsType) {
+    constructor({ message = "internal server error", statusCode = 500, logging = false, context = {} }: ParamsType) {
         super(message);
-        this.statusCode = statusCode;
-        this.errors = [{ message: message || "Bad request" }];
-        this.logging = logging;
-        this.context = context;
-
+        this._statusCode = statusCode;
+        this._logging = logging;
+        this._context = context;
         // Only because we are extending a built-in class
         Object.setPrototypeOf(this, ResponseError.prototype);
+    }
+    get statusCode(): number {
+        return this._statusCode;
+    }
+    get errors(): CustomErrorContent[] {
+        return [{ message: this.message, context: this._context }];
+    }
+    get logging(): boolean {
+        return this._logging;
     }
 }
