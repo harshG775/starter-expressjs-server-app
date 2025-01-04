@@ -8,7 +8,7 @@ const skip = () => {
     const env = process.env.NODE_ENV || "development";
     return env !== "development";
 };
-const morganMiddleware = morgan(
+export const morganMiddleware = morgan(
     // Define message format string (this is the default one).
     // The message format is made from tokens, and each token is
     // defined inside the Morgan library.
@@ -18,5 +18,3 @@ const morganMiddleware = morgan(
     // See the methods above.
     { stream, skip }
 );
-
-export default morganMiddleware;
