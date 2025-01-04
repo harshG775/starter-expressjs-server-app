@@ -9,3 +9,6 @@ dist
 
 # Dependency lock file (optional to ignore)
 package-lock.json
+
+# Logs
+logs
