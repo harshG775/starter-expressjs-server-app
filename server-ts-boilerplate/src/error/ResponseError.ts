@@ -1,20 +1,24 @@
 import { CustomError, CustomErrorContent } from "./CustomError";
 
+type ParamsType = {
+    message?: string;
+    statusCode?: number;
+    errors?: CustomErrorContent[];
+    logging?: boolean;
+    context?: { [key: string]: any };
+};
 export class ResponseError extends CustomError {
     readonly statusCode: number;
     readonly errors: CustomErrorContent[];
     readonly logging: boolean;
+    readonly context: { [key: string]: any };
 
-    constructor(
-        message: string,
-        statusCode: number = 400, // Default status code is 400 (Bad Request)
-        errors: CustomErrorContent[] = [],
-        logging: boolean = true // Default logging behavior
-    ) {
+    constructor({ message = "Bad request", statusCode = 400, logging = false, context = {} }: ParamsType) {
         super(message);
         this.statusCode = statusCode;
-        this.errors = errors.length > 0 ? errors : [{ message }];
+        this.errors = [{ message: message || "Bad request" }];
         this.logging = logging;
+        this.context = context;
 
         // Only because we are extending a built-in class
         Object.setPrototypeOf(this, ResponseError.prototype);

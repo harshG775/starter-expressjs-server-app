@@ -18,7 +18,13 @@ export const corsMiddleware = cors({
         if (isAllowed) {
             callback(null, true);
         } else {
-            callback(new ResponseError(`Origin ${origin} not allowed by CORS`, StatusCodes.FORBIDDEN));
+            callback(
+                new ResponseError({
+                    statusCode: StatusCodes.FORBIDDEN,
+                    message: `Origin ${origin} not allowed by CORS`,
+                    logging: true,
+                })
+            );
         }
     },
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
