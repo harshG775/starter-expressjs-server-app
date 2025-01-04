@@ -7,6 +7,7 @@ export declare global {
 
     namespace NodeJS {
         interface ProcessEnv {
+            APP_VERSION: string | undefined;
             APP_PORT: string | undefined;
             CORS_WHITELISTS: string | undefined;
             NODE_ENV: string | undefined;

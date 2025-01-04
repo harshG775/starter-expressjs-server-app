@@ -2,6 +2,7 @@
 import express, { Express } from "express";
 import { corsMiddleware, errorHandlerMiddleware, notFoundMiddleware } from "./middlewares/index";
 import { router } from "./routes/index";
+import { config } from "./constants";
 
 // variables
 const app: Express = express();
@@ -12,12 +13,11 @@ app.use(express.json({ limit: "10mb" })); // Parse JSON body
 app.use(express.urlencoded({ limit: "10mb", extended: true })); // Parse URL-encoded body
 
 // Routes
-app.use(router); // Application routes
+app.use(`/api/${config.server.version}`, router); // Application routes
 
 // Error Handling
 app.use(notFoundMiddleware); // Handle unmatched routes
 app.use(errorHandlerMiddleware); // Handle errors
-
 
 // exports
 export default app;

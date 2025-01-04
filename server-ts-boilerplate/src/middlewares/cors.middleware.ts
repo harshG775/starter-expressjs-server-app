@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import cors from "cors";
-import { env } from "../constants";
+import { config } from "../constants";
 import { ResponseError } from "../exception/index";
 
 export const corsMiddleware = cors({
@@ -11,7 +11,7 @@ export const corsMiddleware = cors({
         }
 
         // Allow only origins in the whitelist
-        const isAllowed = env.server.originsWhitelist.some(
+        const isAllowed = config.server.originsWhitelist.some(
             (allowedOrigin) => new URL(allowedOrigin).origin === new URL(origin).origin
         );
 
