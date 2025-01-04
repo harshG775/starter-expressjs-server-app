@@ -1,11 +1,12 @@
 import morgan, { StreamOptions } from "morgan";
 import { logger } from "../utils";
+import { config } from "../constants";
 const stream: StreamOptions = {
     // Use the http severity
     write: (message) => logger.http(message),
 };
 const skip = () => {
-    const env = process.env.NODE_ENV || "development";
+    const env = config.server.nodeEnv || "development";
     return env !== "development";
 };
 export const morganMiddleware = morgan(

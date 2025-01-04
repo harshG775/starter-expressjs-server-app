@@ -10,12 +10,13 @@ const levels = {
     debug: 5,
     silly: 6,
 };
+// black, red, green, yellow, blue, magenta, cyan, white, gray
 const colors = {
     error: "red",
     warn: "yellow",
     info: "green",
     http: "magenta",
-    debug: "white",
+    debug: "black",
 };
 const level = () => {
     const env = config.server.nodeEnv;
