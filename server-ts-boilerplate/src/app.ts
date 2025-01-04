@@ -10,9 +10,10 @@ const app: Express = express();
 app.use(corsMiddleware);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
-app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 app.use(router); // routes
+app.use(notFoundMiddleware);
+
 // exports
 export default app;

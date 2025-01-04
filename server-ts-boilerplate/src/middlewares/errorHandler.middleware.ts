@@ -1,7 +1,7 @@
 import { ResponseError } from "../error/index";
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
-export function errorHandlerMiddleware(err: ResponseError, _req: Request, res: Response) {
+export function errorHandlerMiddleware(err: ResponseError, _req: Request, res: Response, _next: NextFunction) {
     if (err instanceof ResponseError) {
         const { statusCode, errors, logging } = err;
         if (logging) {
