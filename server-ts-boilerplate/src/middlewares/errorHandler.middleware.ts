@@ -1,5 +1,5 @@
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
-import { ResponseError } from "../exception/index";
+import { ResponseError } from "../exception";
 import { Request, Response, NextFunction } from "express";
 
 export function errorHandlerMiddleware(err: ResponseError, _req: Request, res: Response, _next: NextFunction) {

@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import cors from "cors";
 import { config } from "../constants";
-import { ResponseError } from "../exception/index";
+import { ResponseError } from "../exception";
 
 export const corsMiddleware = cors({
     origin: (origin, callback) => {
