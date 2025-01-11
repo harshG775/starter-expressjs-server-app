@@ -6,6 +6,7 @@ import { StatusCodes, ReasonPhrases } from "http-status-codes";
 const register = async (req: Request, res: Response): Promise<void> => {
     const { email, password } = req.body;
     // validate fields
+    // https://dev.to/osalumense/validating-request-data-in-expressjs-using-zod-a-comprehensive-guide-3a0j
     if (!email || !password) {
         throw new ResponseError({
             statusCode: StatusCodes.BAD_REQUEST,
