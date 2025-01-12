@@ -1,3 +1,3 @@
 export const getAccessTokenFromHeaders = ({ authorization }: { authorization?: string }) => ({
-    accessToken: authorization?.split(" ")[1],
+    token: authorization?.split(" ")[1],
 });
