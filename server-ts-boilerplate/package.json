@@ -10,8 +10,7 @@
         "build": "npm run clean:dist && tsc && tsc-alias",
         "start": "node dist/index.js",
         "dev": "tsx watch src/index.ts",
-        "lint": "eslint .",
-        "staging": "npm run build && git switch staging && git pull origin dev && git add -f dist package.json && git commit -m 'Build and deploy artifacts to staging' && git push && git switch dev"
+        "lint": "eslint ."
     },
     "keywords": [],
     "author": "",
