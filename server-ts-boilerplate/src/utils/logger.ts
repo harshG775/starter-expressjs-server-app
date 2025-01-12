@@ -3,7 +3,7 @@ import winston from "winston";
 import { join } from "path";
 
 const isDevelopment = config.server.nodeEnv === "development";
-const logDir = isDevelopment ? join(process.cwd(), "/tmp") : join("/tmp");
+const logDir = isDevelopment ? join(process.cwd(), "/tmp", "logs") : join("/tmp", "logs");
 const defaultMeta = { service: "express-server" };
 const levels = {
     error: 0,
@@ -38,8 +38,8 @@ const format = winston.format.combine(
 );
 const transports = [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: join(logDir, "logs/error.log"), level: "error" }),
-    new winston.transports.File({ filename: join(logDir, "logs/all.log") }),
+    new winston.transports.File({ filename: join(logDir, "/error.log"), level: "error" }),
+    new winston.transports.File({ filename: join(logDir, "/all.log") }),
 ];
 export const logger = winston.createLogger({
     defaultMeta,
