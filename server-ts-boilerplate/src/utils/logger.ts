@@ -1,5 +1,14 @@
 import { config } from "../constants";
 import winston from "winston";
+import fs from "fs";
+import path from "path";
+
+// Ensure the logs directory exists
+const logDir = path.resolve("logs");
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+}
+
 const defaultMeta = { service: "express-server" };
 const levels = {
     error: 0,
