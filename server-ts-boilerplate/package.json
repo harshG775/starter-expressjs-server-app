@@ -11,7 +11,7 @@
         "start": "node dist/index.js",
         "dev": "tsx watch src/index.ts",
         "lint": "eslint .",
-        "staging": "npm run build && git switch staging && git add -f dist package.json vercel.json && git commit -m 'Build and deploy artifacts to staging' && git push && git switch dev"
+        "staging": "npm run build && git switch staging && git pull origin dev && git add -f dist package.json && git commit -m 'Build and deploy artifacts to staging' && git push && git switch dev"
     },
     "keywords": [],
     "author": "",
