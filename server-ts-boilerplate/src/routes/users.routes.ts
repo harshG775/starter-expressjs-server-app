@@ -1,14 +1,18 @@
 import { asyncHandler } from "@/utils";
 import { usersController } from "@/controllers";
 import { Router } from "express";
-export const users = (router: Router): void => {
-    router.route("/users/register").post(asyncHandler(usersController.register));
-    router.route("/users/verification/send").post(usersController.verificationSend);
-    router.route("/users/verification/verify").post(usersController.verificationVerify);
-    router.route("/users/login").post(usersController.login);
 
-    // protected
-    router.route("/users/profile").get(usersController.deleteProfile);
-    router.route("/users/profile").put(usersController.updateProfile);
-    router.route("/users/profile").delete(usersController.getProfile);
+export const users = (router: Router): void => {
+    // Public Auth routes
+    router.route("/auth/register").post(asyncHandler(usersController.register));
+    router.route("/auth/verification/send").post(asyncHandler(usersController.verificationSend));
+    router.route("/auth/verification/verify").post(asyncHandler(usersController.verificationVerify));
+    router.route("/auth/login").post(asyncHandler(usersController.login));
+
+    // Protected routes
+    router
+        .route("/profile")
+        .get(asyncHandler(usersController.getProfile)) // Fetch user profile
+        .put(asyncHandler(usersController.updateProfile)) // Update user profile
+        .delete(asyncHandler(usersController.deleteProfile)); // Delete user profile
 };
