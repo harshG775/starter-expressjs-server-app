@@ -1,6 +1,7 @@
 import { config } from "../constants";
 import winston from "winston";
 
+const isDevelopment = config.server.nodeEnv === "development";
 const defaultMeta = { service: "express-server" };
 const levels = {
     error: 0,
@@ -20,8 +21,6 @@ const colors = {
     debug: "black",
 };
 const level = () => {
-    const env = config.server.nodeEnv;
-    const isDevelopment = env === "development";
     return isDevelopment ? "debug" : "warn";
 };
 
@@ -37,8 +36,8 @@ const format = winston.format.combine(
 );
 const transports = [
     new winston.transports.Console(),
-    // new winston.transports.File({ filename: "logs/error.log", level: "error" }),
-    // new winston.transports.File({ filename: "logs/all.log" }),
+    new winston.transports.File({ filename: "tmp/error.log", level: "error" }),
+    new winston.transports.File({ filename: "tmp/all.log" }),
 ];
 export const logger = winston.createLogger({
     defaultMeta,
