@@ -1,8 +1,8 @@
 // imports
 import express, { Express } from "express";
 import { corsMiddleware, errorHandlerMiddleware, morganMiddleware, notFoundMiddleware } from "./middlewares/index";
-import { router } from "./routes/index";
-import { config } from "./constants";
+import { router } from "@/routes/index";
+import { config } from "@/constants";
 
 // variables
 const app: Express = express();

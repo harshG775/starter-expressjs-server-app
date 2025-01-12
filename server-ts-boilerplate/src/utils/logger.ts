@@ -1,4 +1,4 @@
-import { config } from "../constants";
+import { config } from "@/constants";
 import winston from "winston";
 import { join } from "path";
 

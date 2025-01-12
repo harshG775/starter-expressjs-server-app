@@ -1,6 +1,6 @@
 import morgan, { StreamOptions } from "morgan";
-import { logger } from "../utils";
-import { config } from "../constants";
+import { logger } from "@/utils";
+import { config } from "@/constants";
 const stream: StreamOptions = {
     // Use the http severity
     write: (message) => logger.http(message),

@@ -1,5 +1,5 @@
-import { asyncHandler } from "../utils";
-import { usersController } from "../controllers";
+import { asyncHandler } from "@/utils";
+import { usersController } from "@/controllers";
 import { Router } from "express";
 export const users = (router: Router): void => {
     router.route("/users/register").post(asyncHandler(usersController.register));

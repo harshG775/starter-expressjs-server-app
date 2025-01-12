@@ -1,7 +1,7 @@
 import "dotenv/config";
-import app from "./app";
-import _ from "./@types";
-import { config } from "./constants";
+import app from "@/app";
+import _ from "@/@types";
+import { config } from "@/constants";
 const run = async () => {
     try {
         app.listen(config.server.port, () => console.info(`Server running at http://localhost:${config.server.port}`));

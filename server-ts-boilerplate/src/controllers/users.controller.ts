@@ -1,5 +1,5 @@
 // import { createHash } from "@/utils";
-import { ResponseError } from "../exception";
+import { ResponseError } from "@/exception";
 import { Request, Response } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
