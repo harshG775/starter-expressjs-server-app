@@ -1,6 +1,7 @@
 import { asyncHandler } from "@/utils";
 import { usersController } from "@/controllers";
 import { Router } from "express";
+import { authenticateMiddleware } from "@/middlewares/authenticate.middleware";
 
 export const users = (router: Router): void => {
     // Public Auth routes
@@ -12,7 +13,7 @@ export const users = (router: Router): void => {
     // Protected routes
     router
         .route("/profile")
-        .get(asyncHandler(usersController.getProfile)) // Fetch user profile
-        .put(asyncHandler(usersController.updateProfile)) // Update user profile
-        .delete(asyncHandler(usersController.deleteProfile)); // Delete user profile
+        .get(asyncHandler(authenticateMiddleware), asyncHandler(usersController.getProfile)) // Fetch user profile
+        .put(asyncHandler(authenticateMiddleware), asyncHandler(usersController.updateProfile)) // Update user profile
+        .delete(asyncHandler(authenticateMiddleware), asyncHandler(usersController.deleteProfile)); // Delete user profile
 };
