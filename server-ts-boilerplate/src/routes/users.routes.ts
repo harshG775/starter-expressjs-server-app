@@ -1,11 +1,12 @@
 import { asyncHandler } from "@/utils";
 import { usersController } from "@/controllers";
 import { Router } from "express";
-import { authenticateMiddleware } from "@/middlewares";
+import { authenticateMiddleware, validateDataMiddleware } from "@/middlewares";
+import { userRegistrationSchema } from "@/schemas";
 
 export const users = (router: Router): void => {
     // Public Auth routes
-    router.route("/auth/register").post(asyncHandler(usersController.register));
+    router.route("/auth/register").post(asyncHandler(validateDataMiddleware(userRegistrationSchema)),asyncHandler(usersController.register));
     router.route("/auth/verification/send").post(asyncHandler(usersController.verificationSend));
     router.route("/auth/verification/verify").post(asyncHandler(usersController.verificationVerify));
     router.route("/auth/login").post(asyncHandler(usersController.login));

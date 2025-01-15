@@ -4,24 +4,14 @@ import { Request, Response } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
 const register = async (req: Request, res: Response): Promise<void> => {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
     // validate fields
-    // https://dev.to/osalumense/validating-request-data-in-expressjs-using-zod-a-comprehensive-guide-3a0j
-    if (!email || !password) {
-        throw new ResponseError({
-            statusCode: StatusCodes.BAD_REQUEST,
-            message: ReasonPhrases.BAD_REQUEST,
-            context: {
-                required: ["email", "password"],
-            },
-        });
-    }
-    res.status(StatusCodes.OK).json(
-        {   message: ReasonPhrases.OK,
-            status: StatusCodes.OK,
-            data: { email, password },
-        },
-    );
+
+    res.status(StatusCodes.OK).json({
+        message: ReasonPhrases.OK,
+        status: StatusCodes.OK,
+        data: { username, email, password },
+    });
 };
 const verificationSend = async (_req: Request, _res: Response): Promise<void> => {};
 const verificationVerify = async (_req: Request, _res: Response): Promise<void> => {};
