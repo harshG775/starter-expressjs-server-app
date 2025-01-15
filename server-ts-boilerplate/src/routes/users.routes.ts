@@ -1,7 +1,7 @@
 import { asyncHandler } from "@/utils";
 import { usersController } from "@/controllers";
 import { Router } from "express";
-import { authenticateMiddleware } from "@/middlewares/authenticate.middleware";
+import { authenticateMiddleware } from "@/middlewares";
 
 export const users = (router: Router): void => {
     // Public Auth routes
