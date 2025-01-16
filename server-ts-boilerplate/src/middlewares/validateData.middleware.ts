@@ -15,8 +15,8 @@ export function validateDataMiddleware(schema: z.ZodObject<any, any>) {
             }));
             throw new ResponseError({
                 statusCode: StatusCodes.BAD_REQUEST,
-                message: `${ReasonPhrases.BAD_REQUEST} Invalid data`,
-                context: errorMessages,
+                message: "Validation failed",
+                errors: errorMessages,
             });
         }
 

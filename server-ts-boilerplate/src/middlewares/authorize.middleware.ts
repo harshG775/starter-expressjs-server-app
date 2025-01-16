@@ -18,13 +18,16 @@ export async function authorizeMiddleware(requiredRoles: string[] = []) {
 
         if (!hasPermission) {
             throw new ResponseError({
-                message: `${ReasonPhrases.FORBIDDEN}. Insufficient permissions.`,
                 statusCode: StatusCodes.FORBIDDEN,
-                context: {
-                    userId: user.id,
-                    requiredRoles,
-                    userRoles,
-                },
+                message: ReasonPhrases.FORBIDDEN,
+                errors: [
+                    {
+                        message: "Insufficient permissions.",
+                        userId: user.id,
+                        requiredRoles,
+                        userRoles,
+                    },
+                ],
             });
         }
 

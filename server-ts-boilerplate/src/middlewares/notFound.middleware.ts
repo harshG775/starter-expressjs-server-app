@@ -6,6 +6,6 @@ export const notFoundMiddleware = (req: Request, _res: Response) => {
     throw new ResponseError({
         statusCode: StatusCodes.NOT_FOUND,
         message: ReasonPhrases.NOT_FOUND,
-        context: { route: req.originalUrl },
+        errors: [{ message: req.originalUrl }],
     });
 };

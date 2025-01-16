@@ -10,7 +10,7 @@ export async function authenticateMiddleware(req: Request, res: Response, next: 
         throw new ResponseError({
             statusCode: StatusCodes.UNAUTHORIZED,
             message: ReasonPhrases.UNAUTHORIZED,
-            context: { message: "Access denied. No token provided." },
+            errors: [{ message: "Access denied. No token provided." }],
         });
     }
 
