@@ -4,12 +4,18 @@ import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
 // Middleware to authorize the user
 export async function authorizeMiddleware(requiredRoles: string[] = []) {
-    return (req: Request, res: Response, next: NextFunction) => {
+    return (req: Request, _res: Response, next: NextFunction) => {
         const user = req.context?.user;
 
         if (!user) {
-            return res.status(StatusCodes.UNAUTHORIZED).json({
-                message: "Unauthorized. User not authenticated.",
+            throw new ResponseError({
+                statusCode: StatusCodes.UNAUTHORIZED,
+                message: ReasonPhrases.UNAUTHORIZED,
+                errors: [
+                    {
+                        message: "Unauthorized. User not authenticated.",
+                    },
+                ],
             });
         }
 

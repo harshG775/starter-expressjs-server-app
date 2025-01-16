@@ -21,7 +21,10 @@ export async function authenticateMiddleware(req: Request, res: Response, next: 
         next(); // Continue to the next middleware or route
     } catch (err) {
         console.error("authenticateMiddleware error:", err);
-        res.status(403).json({ message: "Invalid token." });
-        return;
+        throw new ResponseError({
+            statusCode: StatusCodes.UNAUTHORIZED,
+            message: ReasonPhrases.UNAUTHORIZED,
+            errors: [{ message: "Invalid token." }],
+        });
     }
 }

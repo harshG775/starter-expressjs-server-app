@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from "express";
 
 export function errorHandlerMiddleware(err: ResponseError, _req: Request, res: Response, _next: NextFunction) {
     if (err instanceof ResponseError) {
-        const { statusCode, errors, logging } = err;
+        const { statusCode, errorDetails, logging } = err;
         if (logging) {
             console.error(
                 JSON.stringify(
@@ -19,7 +19,7 @@ export function errorHandlerMiddleware(err: ResponseError, _req: Request, res: R
             );
         }
 
-        res.status(statusCode).send({ errors });
+        res.status(statusCode).send(errorDetails);
     } else {
         console.error(JSON.stringify(err, null, 2));
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
