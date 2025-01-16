@@ -3,7 +3,7 @@ import { getAccessTokenFromHeaders } from "@/utils";
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
-export async function authenticateMiddleware(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function authenticateMiddleware(req: Request, _res: Response, next: NextFunction): Promise<void> {
     // const token = req.headers['authorization'];
     const { token } = getAccessTokenFromHeaders({ authorization: req.headers.authorization });
     if (!token) {
