@@ -2,6 +2,7 @@ import "dotenv/config";
 import app from "@/app";
 import _ from "@/@types";
 import { config } from "@/constants";
+import { prisma } from "@/db";
 const run = async () => {
     try {
         app.listen(config.server.port, () => console.info(`Server running at http://localhost:${config.server.port}`));
@@ -11,4 +12,12 @@ const run = async () => {
     }
 };
 
-run();
+run()
+    .then(async () => {
+        await prisma.$disconnect();
+    })
+    .catch(async (e) => {
+        console.error(e);
+        await prisma.$disconnect();
+        process.exit(1);
+    });

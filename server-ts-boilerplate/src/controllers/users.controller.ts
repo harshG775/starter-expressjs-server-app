@@ -1,17 +1,22 @@
+import { createUser } from "@/db/prisma.db";
 import { Request, Response } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
 const register = async (req: Request, res: Response): Promise<void> => {
     const { username, email, password } = req.body;
-    // validate fields
+    const user = await createUser({ username, email, password });
 
-    res.status(StatusCodes.OK).json({
-        message: ReasonPhrases.OK,
-        status: StatusCodes.OK,
-        data: { username, email, password },
-    });
+    if (user) {
+        res.status(StatusCodes.OK).json({
+            message: ReasonPhrases.CREATED,
+            status: StatusCodes.CREATED,
+            data: user,
+        });
+    }
 };
-const verificationSend = async (_req: Request, _res: Response): Promise<void> => {};
+const verificationSend = async (_req: Request, _res: Response): Promise<void> => {
+    // const { email } = req.body;
+};
 const verificationVerify = async (_req: Request, _res: Response): Promise<void> => {};
 const login = async (_req: Request, _res: Response): Promise<void> => {};
 //

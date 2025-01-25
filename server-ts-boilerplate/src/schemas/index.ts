@@ -1,1 +1,6 @@
-export { userRegistrationSchema, userLoginSchema } from "./user.schemas";
+export {
+    userRegistrationSchema,
+    verificationSendSchema,
+    verificationVerifySchema,
+    userLoginSchema,
+} from "./user.schemas";
