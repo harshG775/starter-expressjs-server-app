@@ -22,11 +22,11 @@ model User {
     username     String         @unique
     password     String
     verified     Boolean        @default(false)
-    OTPs         OTP[]
+    OTPs         otp[]
     RefreshToken RefreshToken[]
 }
 
-model OTP {
+model otp {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     expiresAt DateTime

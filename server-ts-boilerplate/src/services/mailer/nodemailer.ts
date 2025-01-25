@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
 import { config } from "@/constants";
+import { ResponseError } from "@/exception";
+import { ReasonPhrases, StatusCodes } from "http-status-codes";
 
 const SENDER_EMAIL = config.mailer.senderEmail;
 const google_Pass = config.mailer.googlePass;
@@ -15,24 +17,30 @@ const transporter = nodemailer.createTransport({
     },
 });
 // async..await is not allowed in global scope, must use a wrapper
-export async function sendOTP(
-    receiverEmails: string[],
-    otp: number
-): Promise<[error: Error | null, otp: number | null]> {
-    // send mail with defined transport object
-    const info = {
-        from: `"hgaur491" <${SENDER_EMAIL}>`, // sender address
-        to: receiverEmails.join(", "), // list of receivers
-        subject: "verify your email", // Subject line
-        text: `Your OTP code is ${otp}. It is valid for ${google_OtpExpire} minutes.`,
-        html: `<p>Your OTP code is <b>${otp}</b>. It is valid for <b>${google_OtpExpire} minutes</b>.</p>`,
-    };
-
+export async function sendOTP(receiverEmails: string[], otp: number): Promise<undefined> {
     try {
+        // send mail with defined transport object
+        const info = {
+            from: `"hgaur491" <${SENDER_EMAIL}>`, // sender address
+            to: receiverEmails.join(", "), // list of receivers
+            subject: "verify your email", // Subject line
+            text: `Your OTP code is ${otp}. It is valid for ${google_OtpExpire} minutes.`,
+            html: `<p>Your OTP code is <b>${otp}</b>. It is valid for <b>${google_OtpExpire} minutes</b>.</p>`,
+        };
+        console.log(info);
+
         await transporter.sendMail(info);
-        return [null, otp];
     } catch (error: any) {
-        return [error, null];
+        console.log(error);
+        throw new ResponseError({
+            statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+            message: ReasonPhrases.INTERNAL_SERVER_ERROR,
+            errors: [
+                {
+                    message: "error while sending otp",
+                },
+            ],
+        });
     }
 }
 

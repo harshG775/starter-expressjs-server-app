@@ -6,7 +6,7 @@ export const config = {
         nodeEnv: process?.env?.NODE_ENV,
     },
     mailer: {
-        optExpiresIn_minutes: process.env.OPT_EXPIRES_IN_MINUTES,
+        optExpiresIn_minutes: parseInt(process.env.OPT_EXPIRES_IN_MINUTES || "6"),
         senderEmail: process.env.SENDER_EMAIL,
         googlePass: process.env.GOOGLE_PASS,
     },

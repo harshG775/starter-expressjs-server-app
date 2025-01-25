@@ -1,1 +1,1 @@
-export { prisma } from "./prisma.db";
+export { prisma, findUserByEmail, createUser, createAndSaveOtp } from "./prisma.db";
