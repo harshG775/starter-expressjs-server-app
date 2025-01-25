@@ -1,7 +1,9 @@
+import { SentMessageInfo } from "nodemailer/lib/smtp-transport";
 import nodemailer from "nodemailer";
 import { config } from "@/constants";
 import { ResponseError } from "@/exception";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
+import { to } from "@/utils";
 
 const SENDER_EMAIL = config.mailer.senderEmail;
 const google_Pass = config.mailer.googlePass;
@@ -17,20 +19,20 @@ const transporter = nodemailer.createTransport({
     },
 });
 // async..await is not allowed in global scope, must use a wrapper
-export async function sendOTP(receiverEmails: string[], otp: number): Promise<undefined> {
-    try {
-        // send mail with defined transport object
-        const info = {
-            from: `"hgaur491" <${SENDER_EMAIL}>`, // sender address
-            to: receiverEmails.join(", "), // list of receivers
-            subject: "verify your email", // Subject line
-            text: `Your OTP code is ${otp}. It is valid for ${google_OtpExpire} minutes.`,
-            html: `<p>Your OTP code is <b>${otp}</b>. It is valid for <b>${google_OtpExpire} minutes</b>.</p>`,
-        };
-        console.log(info);
+export async function sendOTP(receiverEmails: string[], otp: number): Promise<SentMessageInfo | undefined> {
+    const info = {
+        from: `"hgaur491" <${SENDER_EMAIL}>`, // sender address
+        to: receiverEmails.join(", "), // list of receivers
+        subject: "verify your email", // Subject line
+        text: `Your OTP code is ${otp}. It is valid for ${google_OtpExpire} minutes.`,
+        html: `<p>Your OTP code is <b>${otp}</b>. It is valid for <b>${google_OtpExpire} minutes</b>.</p>`,
+    };
 
-        await transporter.sendMail(info);
-    } catch (error: any) {
+    const [error, response] = await to(transporter.sendMail(info));
+    if (response) {
+        return response;
+    }
+    if (error) {
         console.log(error);
         throw new ResponseError({
             statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
