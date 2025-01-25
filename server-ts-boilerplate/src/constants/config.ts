@@ -5,4 +5,9 @@ export const config = {
         originsWhitelist: process.env.ORIGINS_WHITELIST?.split(",")?.map((origin) => origin.trim()) || [],
         nodeEnv: process?.env?.NODE_ENV,
     },
+    mailer: {
+        optExpiresIn_minutes: process.env.OPT_EXPIRES_IN_MINUTES,
+        senderEmail: process.env.SENDER_EMAIL,
+        googlePass: process.env.GOOGLE_PASS,
+    },
 };
