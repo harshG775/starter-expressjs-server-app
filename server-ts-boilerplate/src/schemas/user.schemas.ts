@@ -11,7 +11,8 @@ const verificationSendSchema = z.object({
 });
 const verificationVerifySchema = z.object({
     otp: z.string(),
-    otpKey: z.string(),
+    otpId: z.string(),
+    email: z.string().email(),
 });
 
 const userLoginSchema = z.object({
