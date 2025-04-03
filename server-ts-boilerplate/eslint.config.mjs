@@ -1,28 +1,18 @@
+import { defineConfig } from "eslint/config";
 import globals from "globals";
-import pluginJs from "@eslint/js";
+import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
+export default defineConfig([
     { files: ["**/*.{js,mjs,cjs,ts}"] },
-    { languageOptions: { globals: globals.node } },
-    pluginJs.configs.recommended,
-    ...tseslint.configs.recommended,
+    { files: ["**/*.{js,mjs,cjs,ts}"], languageOptions: { globals: globals.node } },
+    { files: ["**/*.{js,mjs,cjs,ts}"], plugins: { js }, extends: ["js/recommended"] },
+    tseslint.configs.recommended,
     {
         rules: {
-            "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-unused-vars": [ 
-                "error",
-                {
-                    args: "all",
-                    argsIgnorePattern: "^_",
-                    caughtErrors: "all",
-                    caughtErrorsIgnorePattern: "^_",
-                    destructuredArrayIgnorePattern: "^_",
-                    varsIgnorePattern: "^_",
-                    ignoreRestSiblings: true,
-                },
-            ],
+            "@typescript-eslint/no-explicit-any": "warn",
+            "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
         },
     },
-];
+    { ignores: ["**/dist/**"] },
+]);

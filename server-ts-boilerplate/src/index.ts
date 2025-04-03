@@ -1,14 +1,9 @@
-import "dotenv/config";
-import app from "./app";
-import _ from "./@types";
-import { config } from "./constants";
-const run = async () => {
-    try {
-        app.listen(config.server.port, () => console.info(`Server running at http://localhost:${config.server.port}`));
-    } catch (error) {
-        console.error("Failed to start server", { error });
-        process.exit(1);
-    }
-};
+import http from "http";
 
-run();
+const server = http.createServer((req: http.IncomingMessage, res: http.ServerResponse) => {
+    res.end("Hello World!");
+});
+
+server.listen(8000, () => {
+    console.log("Server is running on port http://localhost:8000");
+});

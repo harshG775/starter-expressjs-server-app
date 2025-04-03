@@ -1,17 +1,62 @@
-export type CustomErrorContent = {
-    message: string;
-    context?: { [key: string]: any };
+import { BaseError, BaseErrorContent } from "./BaseError";
+
+export type ParamsType = {
+    message?: string;
+    statusCode?: number;
+    logging?: boolean;
+    errors?: BaseErrorContent[];
 };
+/**
+ * Custom error class that extends BaseError
+ * @param message - Error message
+ * @param statusCode - HTTP status code
+ * @param logging - Whether to log the error
+ * @param errors - Array of error details
+ * @example
+ * ```typescript
+ * const validationError = new CustomError({
+ *     message: "Invalid input",
+ *     statusCode: 400,
+ *     errors: [
+ *         { field: "username", message: "Username is required" },
+ *         { field: "email", message: "Email is required" },
+ *         { field: "password", message: "Password is required" },
+ *     ],
+ * });
+ * ```
+*/
+export class CustomError extends BaseError {
+    private readonly _statusCode: number;
+    private readonly _logging: boolean;
+    private readonly _errors?: BaseErrorContent[];
 
-export abstract class CustomError extends Error {
-    abstract readonly statusCode: number;
-    abstract readonly errors: CustomErrorContent[];
-    abstract readonly logging: boolean;
-
-    constructor(message: string) {
+    constructor({ message = "Internal Server Error", statusCode = 500, logging = false, errors }: ParamsType) {
         super(message);
+        this._statusCode = statusCode;
+        this._logging = logging;
+        this._errors = errors && errors.length ? errors : undefined;
+        this.name = "CustomError";
 
-        // Only because we are extending a built in class
-        Object.setPrototypeOf(this, CustomError.prototype);
+        Object.setPrototypeOf(this, CustomError.prototype); // Maintain prototype chain
+    }
+
+    get statusCode(): number {
+        return this._statusCode;
+    }
+
+    get errors(): BaseErrorContent[] | undefined {
+        return this._errors;
+    }
+
+    get logging(): boolean {
+        return this._logging;
+    }
+
+    toJSON(): Record<string, any> {
+        return {
+            statusCode: this._statusCode,
+            message: this.message,
+            ...(this._errors ? { errors: this._errors } : {}),
+        };
     }
 }

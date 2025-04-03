@@ -9,6 +9,7 @@
         "strictPropertyInitialization": false,
         "strict": true,
         "skipLibCheck": true,
+        "strictNullChecks": true /* Enable strict null checks. */,
         "isolatedModules": true,
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "Node",
