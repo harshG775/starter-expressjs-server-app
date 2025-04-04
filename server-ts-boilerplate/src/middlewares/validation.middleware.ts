@@ -15,7 +15,7 @@ export function validationMiddleware(schema: ZodSchema<any>, source: "body" | "q
         if (!validationResult.success) {
             return next(
                 new CustomError({
-                    statusCode: StatusCodes.BAD_REQUEST,
+                    statusCode: StatusCodes.UNPROCESSABLE_ENTITY,
                     message: "Validation failed",
                     errors: validationResult.error.errors.map((err) => ({
                         field: err.path.join("."),
