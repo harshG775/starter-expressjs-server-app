@@ -43,4 +43,3 @@ exports.logger = winston_1.default.createLogger({
     format,
     transports,
 });
-exports.logger.info("Logger initialized");
