@@ -1,7 +1,12 @@
 import express from "express";
 import { router } from "./router";
-import { corsMiddleware, errorHandlerMiddleware, morganMiddleware, notFoundMiddleware } from "@/middlewares";
-import { rateLimiterMiddleware } from "@/middlewares/rateLimiter.middleware";
+import {
+    corsMiddleware,
+    errorHandlerMiddleware,
+    morganMiddleware,
+    notFoundMiddleware,
+    rateLimiterMiddleware,
+} from "@/middlewares";
 
 const app = express();
 
