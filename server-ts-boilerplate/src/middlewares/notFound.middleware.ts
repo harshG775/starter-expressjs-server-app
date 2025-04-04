@@ -7,5 +7,6 @@ export const notFoundMiddleware = (req: Request, _res: Response) => {
         statusCode: StatusCodes.NOT_FOUND,
         message: "Endpoint Not Found",
         errors: [{ message: req.originalUrl }],
+        logging: true,
     });
 };

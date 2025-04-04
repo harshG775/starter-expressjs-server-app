@@ -39,7 +39,7 @@ export class CustomError extends BaseError {
 
         Object.setPrototypeOf(this, CustomError.prototype); // Maintain prototype chain
     }
-
+    
     get statusCode(): number {
         return this._statusCode;
     }
@@ -54,6 +54,7 @@ export class CustomError extends BaseError {
 
     get details(): Record<string, unknown> {
         return {
+            success: false,
             statusCode: this._statusCode,
             message: this.message,
             ...(this._errors ? { errors: this._errors } : {}),
