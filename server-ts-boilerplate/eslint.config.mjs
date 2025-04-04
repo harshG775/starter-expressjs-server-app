@@ -11,7 +11,18 @@ export default defineConfig([
     {
         rules: {
             "@typescript-eslint/no-explicit-any": "warn",
-            "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    args: "all",
+                    argsIgnorePattern: "^[A-Z_]",
+                    caughtErrors: "all",
+                    caughtErrorsIgnorePattern: "^[A-Z_]",
+                    destructuredArrayIgnorePattern: "^[A-Z_]",
+                    varsIgnorePattern: "^[A-Z_]",
+                    ignoreRestSiblings: true,
+                },
+            ],
         },
     },
     { ignores: ["**/dist/**"] },

@@ -52,7 +52,7 @@ export class CustomError extends BaseError {
         return this._logging;
     }
 
-    toJSON(): Record<string, any> {
+    get details(): Record<string, unknown> {
         return {
             statusCode: this._statusCode,
             message: this.message,

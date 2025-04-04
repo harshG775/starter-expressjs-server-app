@@ -1,5 +1,6 @@
 import express from "express";
 import { router } from "./router";
+import { errorHandlerMiddleware, notFoundMiddleware } from "@/middlewares";
 
 const app = express();
 
@@ -11,5 +12,7 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use("/api", router);
 
 // Error handling
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 export default app;
