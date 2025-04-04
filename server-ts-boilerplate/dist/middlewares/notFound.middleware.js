@@ -7,7 +7,7 @@ const notFoundMiddleware = (req, _res) => {
     throw new exception_1.CustomError({
         statusCode: http_status_codes_1.StatusCodes.NOT_FOUND,
         message: "Endpoint Not Found",
-        errors: [{ message: req.originalUrl }],
+        errors: [{ endpoint: req.originalUrl }],
         logging: true,
     });
 };
