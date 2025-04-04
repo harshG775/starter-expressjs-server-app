@@ -18,9 +18,6 @@ export function errorHandlerMiddleware(err: CustomError, _req: Request, res: Res
                 ),
             );
         }
-        console.log("\n\n\n\n\n\nerr.stack");
-        console.log(err.stack);
-        
         res.status(statusCode).send(details);
     } else {
         console.error(err);
