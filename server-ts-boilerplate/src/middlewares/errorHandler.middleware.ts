@@ -1,9 +1,9 @@
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
-import { CustomError } from "@/exception";
+import { BaseError, CustomError } from "@/exception";
 import { Request, Response, NextFunction } from "express";
 
 export function errorHandlerMiddleware(err: CustomError, _req: Request, res: Response, _next: NextFunction) {
-    if (err instanceof CustomError) {
+    if (err instanceof BaseError) {
         const { statusCode, details, logging } = err;
         if (logging) {
             console.error(
