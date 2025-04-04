@@ -48,4 +48,3 @@ export const logger = winston.createLogger({
     format,
     transports,
 });
-logger.info("Logger initialized");
