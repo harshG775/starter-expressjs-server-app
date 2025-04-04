@@ -1,12 +1,14 @@
 import express from "express";
 import { router } from "./router";
-import { errorHandlerMiddleware, notFoundMiddleware } from "@/middlewares";
+import { corsMiddleware, errorHandlerMiddleware, morganMiddleware, notFoundMiddleware } from "@/middlewares";
 
 const app = express();
 
 // Middlewares
+app.use(corsMiddleware);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
+app.use(morganMiddleware);
 
 // Routes
 app.use("/api", router);
