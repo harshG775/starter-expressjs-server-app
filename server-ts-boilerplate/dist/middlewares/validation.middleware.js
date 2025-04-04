@@ -9,7 +9,7 @@ function validationMiddleware(schema, source = "body") {
         const validationResult = schema.safeParse(dataToValidate);
         if (!validationResult.success) {
             return next(new exception_1.CustomError({
-                statusCode: http_status_codes_1.StatusCodes.BAD_REQUEST,
+                statusCode: http_status_codes_1.StatusCodes.UNPROCESSABLE_ENTITY,
                 message: "Validation failed",
                 errors: validationResult.error.errors.map((err) => ({
                     field: err.path.join("."),
