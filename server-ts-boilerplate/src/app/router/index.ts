@@ -1,6 +1,6 @@
 // Router
 import { Router } from "express";
-import { healthRouter } from "./health.routes";
+import { healthRouter } from "./health.router";
 const router = Router();
 
 router.use("/health", healthRouter);
