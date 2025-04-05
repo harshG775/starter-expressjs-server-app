@@ -1,25 +1,19 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.corsMiddleware = void 0;
-const http_status_codes_1 = require("http-status-codes");
-const cors_1 = __importDefault(require("cors"));
-const constants_1 = require("../constants");
-const exception_1 = require("../exception");
-exports.corsMiddleware = (0, cors_1.default)({
+import { StatusCodes } from "http-status-codes";
+import cors from "cors";
+import { config } from "../constants";
+import { CustomError } from "../exception";
+export const corsMiddleware = cors({
     origin: (origin, callback) => {
         if (!origin) {
             return callback(null, true);
         }
-        const isAllowed = constants_1.config.server.allowedOrigins.some((allowedOrigin) => new URL(allowedOrigin).origin === new URL(origin).origin);
+        const isAllowed = config.server.allowedOrigins.some((allowedOrigin) => new URL(allowedOrigin).origin === new URL(origin).origin);
         if (isAllowed) {
             callback(null, true);
         }
         else {
-            callback(new exception_1.CustomError({
-                statusCode: http_status_codes_1.StatusCodes.FORBIDDEN,
+            callback(new CustomError({
+                statusCode: StatusCodes.FORBIDDEN,
                 message: `Origin ${origin} not allowed by CORS`,
                 logging: true,
             }));
@@ -31,5 +25,5 @@ exports.corsMiddleware = (0, cors_1.default)({
     credentials: true,
     preflightContinue: false,
     maxAge: 600,
-    optionsSuccessStatus: http_status_codes_1.StatusCodes.NO_CONTENT,
+    optionsSuccessStatus: StatusCodes.NO_CONTENT,
 });
