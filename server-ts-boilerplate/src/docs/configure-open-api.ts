@@ -1,7 +1,6 @@
 import { Express } from "express";
-import { apiReference } from "@scalar/express-api-reference";
-
-const configureOpenAPI = (prefix: string="api", app: Express) => {
+const configureOpenAPI = async (prefix: string = "api", app: Express) => {
+    const { apiReference } = await import("@scalar/express-api-reference");
     app.use(
         `${prefix}/docs/reference`,
         apiReference({
