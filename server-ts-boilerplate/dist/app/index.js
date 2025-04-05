@@ -15,7 +15,7 @@ app.use(express_1.default.json({ limit: "10mb" }));
 app.use(express_1.default.urlencoded({ limit: "10mb", extended: true }));
 app.use(middlewares_1.morganMiddleware);
 app.use("/public", express_1.default.static(path_1.default.join(__dirname, "../../public")));
-app.use("api/docs/reference", configure_open_api_1.configureOpenAPI);
+app.use("/api/docs/reference", configure_open_api_1.configureOpenAPI);
 app.use("/api", router_1.router);
 app.use(middlewares_1.notFoundMiddleware);
 app.use(middlewares_1.errorHandlerMiddleware);
