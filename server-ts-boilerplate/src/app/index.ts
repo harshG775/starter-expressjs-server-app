@@ -21,7 +21,7 @@ app.use("/public", express.static(path.join(__dirname, "../../public")));
 
 
 // Routes
-configureOpenAPI("/api", app);
+app.use("api/docs/reference", configureOpenAPI);
 app.use("/api", router);
 
 // Error handling
