@@ -5,7 +5,7 @@ info:
     description: API documentation
 
 paths:
-    /health:
+    /api/health:
         get:
             summary: Health Check
             description: Returns OK if the server is healthy
