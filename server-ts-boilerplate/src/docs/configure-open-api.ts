@@ -1,6 +1,6 @@
 import { apiReference } from "@scalar/express-api-reference";
 
-const configureOpenAPI = apiReference({
+const configureOpenAPI =  apiReference({
     theme: "kepler",
     defaultHttpClient: {
         targetKey: "js",
