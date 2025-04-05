@@ -1,8 +1,14 @@
-import { config } from "../constants";
-import winston from "winston";
-import { join } from "path";
-const isDevelopment = config.server.nodeEnv === "development";
-const logDir = isDevelopment ? join(process.cwd(), "/tmp", "logs") : join("/tmp", "logs");
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.logger = void 0;
+const constants_1 = require("../constants");
+const winston_1 = __importDefault(require("winston"));
+const path_1 = require("path");
+const isDevelopment = constants_1.config.server.nodeEnv === "development";
+const logDir = isDevelopment ? (0, path_1.join)(process.cwd(), "/tmp", "logs") : (0, path_1.join)("/tmp", "logs");
 const defaultMeta = { service: "express-server" };
 const levels = {
     error: 0,
@@ -23,14 +29,14 @@ const colors = {
 const level = () => {
     return isDevelopment ? "debug" : "warn";
 };
-winston.addColors(colors);
-const format = winston.format.combine(winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" }), winston.format.colorize({ all: true }), winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`));
+winston_1.default.addColors(colors);
+const format = winston_1.default.format.combine(winston_1.default.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" }), winston_1.default.format.colorize({ all: true }), winston_1.default.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`));
 const transports = [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: join(logDir, "/error.log"), level: "error" }),
-    new winston.transports.File({ filename: join(logDir, "/all.log") }),
+    new winston_1.default.transports.Console(),
+    new winston_1.default.transports.File({ filename: (0, path_1.join)(logDir, "/error.log"), level: "error" }),
+    new winston_1.default.transports.File({ filename: (0, path_1.join)(logDir, "/all.log") }),
 ];
-export const logger = winston.createLogger({
+exports.logger = winston_1.default.createLogger({
     defaultMeta,
     level: level(),
     levels,

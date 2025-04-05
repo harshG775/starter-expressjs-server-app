@@ -1,5 +1,8 @@
-import { apiReference } from "@scalar/express-api-reference";
-const configureOpenAPI = apiReference({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.configureOpenAPI = void 0;
+const express_api_reference_1 = require("@scalar/express-api-reference");
+const configureOpenAPI = (0, express_api_reference_1.apiReference)({
     theme: "kepler",
     defaultHttpClient: {
         targetKey: "js",
@@ -8,4 +11,4 @@ const configureOpenAPI = apiReference({
     pageTitle: "Awesome API",
     url: `/public/docs/openapi.yaml`,
 });
-export { configureOpenAPI };
+exports.configureOpenAPI = configureOpenAPI;

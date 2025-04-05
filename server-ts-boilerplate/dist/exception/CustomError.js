@@ -1,5 +1,8 @@
-import { BaseError } from "./BaseError";
-export class CustomError extends BaseError {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CustomError = void 0;
+const BaseError_1 = require("./BaseError");
+class CustomError extends BaseError_1.BaseError {
     _statusCode;
     _logging;
     _errors;
@@ -29,3 +32,4 @@ export class CustomError extends BaseError {
         };
     }
 }
+exports.CustomError = CustomError;
