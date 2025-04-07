@@ -7,4 +7,3 @@ healthRouter.route("/").get((req, res) => {
     });
 });
 export { healthRouter };
-//# sourceMappingURL=health.router.js.map

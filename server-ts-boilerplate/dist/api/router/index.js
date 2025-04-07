@@ -3,4 +3,3 @@ import { healthRouter } from "./health.router.js";
 const router = Router();
 router.use("/health", healthRouter);
 export { router };
-//# sourceMappingURL=index.js.map

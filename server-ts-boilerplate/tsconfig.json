@@ -6,7 +6,7 @@
         "moduleResolution": "NodeNext",
         "outDir": "./dist",
         "rootDir": "./src",
-        "sourceMap": true,
+        "sourceMap": false,
         "declaration": false,
 
         /* Strict Type-Checking */
@@ -35,7 +35,7 @@
         "forceConsistentCasingInFileNames": true,
 
         /* Source Maps & Diagnostics */
-        "inlineSources": true,
+        "inlineSources": false,
         "diagnostics": true,
 
         // ...
