@@ -1,31 +1,41 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
+        /* Base Configuration */
+        "target": "ES2022",
         "module": "CommonJS",
+        "moduleResolution": "Node",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "sourceMap": true,
+
+        /* Strict Type-Checking */
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+
+        /* Module Handling */
         "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+
+        /* Paths */
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": ["*"]
+        },
+
         "forceConsistentCasingInFileNames": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strictPropertyInitialization": false,
-        "strict": true,
         "skipLibCheck": true,
-        "strictNullChecks": true /* Enable strict null checks. */,
         "isolatedModules": true,
-        "allowSyntheticDefaultImports": true,
-        "moduleResolution": "Node",
-        "resolveJsonModule": true,
         "removeComments": true,
-        "noImplicitAny": true,
-        "paths": {
-            "@/*": ["*"]
-        },
-        "baseUrl": "./src",
-        "rootDir": "./src",
-        "outDir": "./dist",
+
         "lib": ["ESNext"],
         "types": ["node"],
         "typeRoots": ["./node_modules/@types", "./src/@types"]
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "dist"]
+    "include": ["src/**/*.ts", "src/**/*.tsx", "typings/**/*.d.ts"],
+    "exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.test.ts", "**/__tests__/**/*"]
 }

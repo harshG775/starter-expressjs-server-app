@@ -7,7 +7,7 @@
     },
     "scripts": {
         "clean:dist": "rimraf ./dist",
-        "build": "npm run lint && npm run clean:dist && tsc && tsc-alias",
+        "build": "npm run lint && npm run clean:dist && tsc --noEmit && tsup",
         "dev": "tsx watch src/index.ts",
         "lint": "eslint .",
         "format": "pnpm exec prettier . --write"
@@ -26,6 +26,7 @@
         "prettier": "3.5.3",
         "rimraf": "^6.0.1",
         "tsc-alias": "^1.8.13",
+        "tsup": "^8.4.0",
         "tsx": "^4.19.3",
         "typescript": "^5.8.2",
         "typescript-eslint": "^8.29.0"
