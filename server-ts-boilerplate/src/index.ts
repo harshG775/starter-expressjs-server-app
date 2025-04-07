@@ -1,6 +1,7 @@
 import { app } from "./api/index.js";
+import { config } from "./constants/index.js";
 
-const port = 8000;
+const { port, host } = config.server;
 app.listen(port, async () => {
-    console.info(`Server is running on port http://localhost:${port}`);
+    console.info(`Server is running on port http://${host}:${port}`);
 });
