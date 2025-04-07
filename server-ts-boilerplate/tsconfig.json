@@ -1,0 +1,50 @@
+{
+    "compilerOptions": {
+        /* Base Configuration */
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "outDir": "dist",
+        "rootDir": "src",
+        "sourceMap": true,
+        "declaration": true,
+
+        /* Strict Type-Checking */
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+
+        /* Module Handling */
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+
+        /* Paths */
+        "baseUrl": "./",
+        "paths": {
+            "root/*": ["*"],
+            "@/*": ["./src/*"]
+        },
+
+        /* ESM/Node Specifics */
+        "types": ["node"],
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
+        "forceConsistentCasingInFileNames": true,
+
+        /* Source Maps & Diagnostics */
+        "inlineSources": true,
+        "diagnostics": true,
+
+        // ...
+        "skipLibCheck": true,
+        "removeComments": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
+}

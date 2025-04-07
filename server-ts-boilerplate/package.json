@@ -1,0 +1,17 @@
+{
+    "name": "server-ts-boilerplate",
+    "version": "1.0.0",
+    "main": "src/main.ts",
+    "scripts": {
+        "dev": "tsx watch src/main.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@types/node": "^22.14.0",
+        "tsx": "^4.19.3",
+        "typescript": "^5.8.3"
+    }
+}
