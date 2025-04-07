@@ -265,13 +265,14 @@ var configureOpenAPI = apiReference({
 
 // src/app/index.ts
 import path from "path";
+import { cwd } from "process";
 var app = express();
 app.use(rateLimiterMiddleware);
 app.use(corsMiddleware);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(morganMiddleware);
-app.use("/public", express.static(path.join(__dirname, "../public")));
+app.use("/public", express.static(path.join(cwd(), "/public")));
 app.use("/api/docs/reference", configureOpenAPI);
 app.use("/api", router);
 app.use(notFoundMiddleware);
