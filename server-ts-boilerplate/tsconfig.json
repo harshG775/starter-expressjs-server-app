@@ -7,7 +7,7 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "sourceMap": true,
-        "declaration": true,
+        "declaration": false,
 
         /* Strict Type-Checking */
         "strict": true,
