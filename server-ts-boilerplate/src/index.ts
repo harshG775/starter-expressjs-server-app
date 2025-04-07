@@ -1,5 +1,6 @@
-import { app } from "@/api/index";
+import { app } from "./api/index.js";
 
-app.listen(8000, async () => {
-    console.info(`Example app listening on http://localhost:${8000}`);
+const port = 8000;
+app.listen(port, async () => {
+    console.info(`Server is running on port http://localhost:${port}`);
 });

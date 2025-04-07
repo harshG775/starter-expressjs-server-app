@@ -2,6 +2,7 @@
     "name": "server-ts-boilerplate",
     "version": "1.0.0",
     "main": "src/index.ts",
+    "type": "module",
     "scripts": {
         "clean:dist": "rimraf ./dist",
         "build": "npm run clean:dist && tsc && tsc-alias",
@@ -15,6 +16,7 @@
         "@types/express": "^5.0.1",
         "@types/node": "^22.14.0",
         "rimraf": "^6.0.1",
+        "tsc-alias": "^1.8.13",
         "tsx": "^4.19.3",
         "typescript": "^5.8.3"
     },
