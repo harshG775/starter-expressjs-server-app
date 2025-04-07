@@ -7,8 +7,8 @@ export default defineConfig({
     clean: true,
 
     outDir: "dist",
-    format: ["cjs"],
-    target: "node14",
+    format: ["esm"],
+    target: "es2022",
     // dts: true,
     // minify: true,
     
