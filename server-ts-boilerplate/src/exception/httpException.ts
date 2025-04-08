@@ -1,10 +1,10 @@
-export type ErrorErrorsType = { [key: string]: any }[] | undefined;
+type httpExceptionErrors = { [key: string]: any }[] | undefined;
 
-export type ParamsType = {
+type ParamsType = {
     message?: string;
     statusCode?: number;
     logging?: boolean;
-    errors?: ErrorErrorsType;
+    errors?: httpExceptionErrors;
 };
 
 /**
@@ -15,7 +15,7 @@ export type ParamsType = {
  * @param errors - Array of error details
  * @example
  * ```typescript
- * const validationError = new CustomError({
+ * const validationError = new HttpException ({
  *     message: "Invalid input",
  *     statusCode: 400,
  *     errors: [
@@ -26,19 +26,24 @@ export type ParamsType = {
  * });
  * ```
  */
-export class ResponseError extends Error {
+export class HttpException extends Error {
     statusCode: number;
     logging: boolean;
-    errors?: ErrorErrorsType;
+    errors?: httpExceptionErrors;
 
-    constructor({ message = "Something went wrong on the server", statusCode = 500, logging = false, errors, }: ParamsType) {
+    constructor({
+        message = "Something went wrong on the server",
+        statusCode = 500,
+        logging = false,
+        errors,
+    }: ParamsType) {
         super(message);
         this.statusCode = statusCode;
         this.logging = logging;
         this.errors = errors && errors.length ? errors : undefined;
-        this.name = "ResponseError";
+        this.name = "HttpException ";
 
-        Object.setPrototypeOf(this, ResponseError.prototype);
+        Object.setPrototypeOf(this, HttpException.prototype);
     }
     get details(): Record<string, unknown> {
         return {

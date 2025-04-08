@@ -1,2 +1,2 @@
-export { ResponseError } from "./ResponseError.js";
+export { HttpException } from "./httpException.js";
 export { errorHandler } from "./errorHandler.js";

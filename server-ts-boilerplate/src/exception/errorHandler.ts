@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
-import { ResponseError } from "./ResponseError.js";
+import { HttpException } from "./httpException.js";
 
 export function errorHandler(err: unknown, _req: Request, res: Response, _next: NextFunction) {
-    if (err instanceof ResponseError) {
+    if (err instanceof HttpException ) {
         if (err.logging) {
             console.error(
                 JSON.stringify(
