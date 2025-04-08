@@ -1,3 +1,4 @@
+import { config } from "@/config/index.js";
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 
@@ -7,6 +8,7 @@ const health = async (_req: Request, res: Response, next: NextFunction) => {
             success: true,
             message: ReasonPhrases.OK,
             status: StatusCodes.OK,
+            environment: config.nodeEnv,
             uptime: process.uptime(),
             timestamp: new Date().toISOString(),
         });
