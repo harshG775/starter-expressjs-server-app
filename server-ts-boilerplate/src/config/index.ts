@@ -8,7 +8,7 @@ const config = {
     nodeEnv: process.env.NODE_ENV || "development",
     port: Number(process.env.PORT) || 8000,
     host: process.env.HOST || "localhost",
-    version: process.env.npm_package_version || "1.0.0",
+    version: process.env.VERSION || "1.0.0",
     allowedCorsOrigins: JSON.parse(process.env.ALLOWED_CORS_ORIGINS || '["http://localhost:8000"]'),
 };
 
