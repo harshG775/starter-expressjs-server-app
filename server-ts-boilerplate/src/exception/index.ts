@@ -1,2 +1,3 @@
-export { BaseErrorErrors, BaseError } from "./BaseError.js";
-export { ResponseError, ParamsType } from "./ResponseError.js";
+export { BaseError } from "./BaseError.js";
+export { ResponseError } from "./ResponseError.js";
+export { errorHandler } from "./errorHandler.js";

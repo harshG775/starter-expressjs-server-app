@@ -1,6 +1,6 @@
-import { BaseErrorErrors, BaseError } from "./BaseError.js";
+import { BaseError, BaseErrorErrors } from "./BaseError.js";
 
-type ParamsType = {
+export type ParamsType = {
     message?: string;
     statusCode?: number;
     logging?: boolean;
@@ -26,7 +26,7 @@ type ParamsType = {
  * });
  * ```
 */
-class ResponseError extends BaseError {
+export class ResponseError extends BaseError {
     private readonly _statusCode: number;
     private readonly _logging: boolean;
     private readonly _errors?: BaseErrorErrors;
@@ -61,5 +61,3 @@ class ResponseError extends BaseError {
         };
     }
 }
-
-export { ResponseError, ParamsType };
