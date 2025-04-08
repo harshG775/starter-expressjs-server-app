@@ -1,4 +1,4 @@
-type httpExceptionErrors = { [key: string]: any }[] | undefined;
+export type httpExceptionErrors = { [key: string]: any }[] | undefined;
 
 type ParamsType = {
     message?: string;
