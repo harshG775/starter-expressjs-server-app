@@ -1,6 +1,5 @@
-import { ResponseError } from "../../exception/index.js";
-const health = async (_req, res, next) => {
-    next(new ResponseError({ message: "testing ResponseError", statusCode: 400, logging: true }));
-    return;
+import { StatusCodes, ReasonPhrases } from "http-status-codes";
+const health = async (_req, res, _next) => {
+    res.status(StatusCodes.OK).json({ message: ReasonPhrases.OK, status: StatusCodes.OK });
 };
 export const healthController = { health };
