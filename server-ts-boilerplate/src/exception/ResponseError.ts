@@ -1,11 +1,10 @@
-import { BaseError } from "./BaseError.js";
-import type { BaseErrorErrors } from "./BaseError.js";
+export type ErrorErrorsType = { [key: string]: any }[] | undefined;
 
 export type ParamsType = {
     message?: string;
     statusCode?: number;
     logging?: boolean;
-    errors?: BaseErrorErrors;
+    errors?: ErrorErrorsType;
 };
 
 /**
@@ -27,38 +26,25 @@ export type ParamsType = {
  * });
  * ```
  */
-export class ResponseError extends BaseError {
-    private readonly _statusCode: number;
-    private readonly _logging: boolean;
-    private readonly _errors?: BaseErrorErrors;
+export class ResponseError extends Error {
+    statusCode: number;
+    logging: boolean;
+    errors?: ErrorErrorsType;
 
     constructor({ message = "Internal Server Error", statusCode = 500, logging = false, errors }: ParamsType) {
         super(message);
-        this._statusCode = statusCode;
-        this._logging = logging;
-        this._errors = errors && errors.length ? errors : undefined;
+        this.statusCode = statusCode;
+        this.logging = logging;
+        this.errors = errors && errors.length ? errors : undefined;
         this.name = "ResponseError";
 
-        Object.setPrototypeOf(this, BaseError.prototype);
+        Object.setPrototypeOf(this, ResponseError.prototype);
     }
-
-    get statusCode(): number {
-        return this._statusCode;
-    }
-
-    get errors(): BaseErrorErrors {
-        return this._errors;
-    }
-
-    get logging(): boolean {
-        return this._logging;
-    }
-
     get details(): Record<string, unknown> {
         return {
-            statusCode: this._statusCode,
+            statusCode: this.statusCode,
             message: this.message,
-            ...(this._errors ? { errors: this._errors } : {}),
+            ...(this.errors ? { errors: this.errors } : {}),
         };
     }
 }

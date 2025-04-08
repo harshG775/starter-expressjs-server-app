@@ -3,27 +3,22 @@ import { StatusCodes, ReasonPhrases } from "http-status-codes";
 import { ResponseError } from "./ResponseError.js";
 import { BaseError } from "./BaseError.js";
 
-export function errorHandler(err: ResponseError, _req: Request, res: Response, _next: NextFunction) {
-    if (err instanceof BaseError) {
-        const { _statusCode, _details, _logging } = err;
-        if (_logging) {
+export function errorHandler(err: unknown, _req: Request, res: Response, _next: NextFunction) {
+    if (err instanceof ResponseError) {
+        if (err.logging) {
             console.error(
                 JSON.stringify(
                     {
-                        code: err._statusCode,
-                        errors: err._errors,
-                        stack: err._stack,
+                        code: err.statusCode,
+                        errors: err.errors,
+                        stack: err.stack,
                     },
                     null,
                     2
                 )
             );
         }
-        res.status(_statusCode).send({
-            statusCode: err._statusCode,
-            message: err.message,
-            ...(err._errors ? { errors: err._errors } : {}),
-        });
+        res.status(err.statusCode).send(err.details);
     } else {
         console.error(err);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
