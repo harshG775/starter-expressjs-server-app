@@ -11,5 +11,5 @@ const config = {
     version: process.env.VERSION || "1.0.0",
     allowedCorsOrigins: JSON.parse(process.env.ALLOWED_CORS_ORIGINS || '["http://localhost:8000"]'),
 };
-
 export { config };
+
