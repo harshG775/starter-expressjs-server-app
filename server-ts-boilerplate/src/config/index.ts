@@ -9,7 +9,7 @@ const config = {
     port: Number(process.env.PORT) || 8000,
     host: process.env.HOST || "localhost",
     version: process.env.npm_package_version || "1.0.0",
-    allowedCorsOrigins: process.env.ALLOWED_CORS_ORIGINS?.split(",") || ["http://localhost:8000"],
+    allowedCorsOrigins: JSON.parse(process.env.ALLOWED_CORS_ORIGINS || '["http://localhost:8000"]'),
 };
 
 export { config };
