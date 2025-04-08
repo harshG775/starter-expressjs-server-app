@@ -5,21 +5,25 @@ import { BaseError } from "./BaseError.js";
 
 export function errorHandler(err: ResponseError, _req: Request, res: Response, _next: NextFunction) {
     if (err instanceof BaseError) {
-        const { statusCode, details, logging } = err;
-        if (logging) {
+        const { _statusCode, _details, _logging } = err;
+        if (_logging) {
             console.error(
                 JSON.stringify(
                     {
-                        code: err.statusCode,
-                        errors: err.errors,
-                        stack: err.stack,
+                        code: err._statusCode,
+                        errors: err._errors,
+                        stack: err._stack,
                     },
                     null,
                     2
                 )
             );
         }
-        res.status(statusCode).send(details);
+        res.status(_statusCode).send({
+            statusCode: err._statusCode,
+            message: err.message,
+            ...(err._errors ? { errors: err._errors } : {}),
+        });
     } else {
         console.error(err);
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
