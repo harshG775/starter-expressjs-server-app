@@ -31,7 +31,7 @@ export class ResponseError extends Error {
     logging: boolean;
     errors?: ErrorErrorsType;
 
-    constructor({ message = "Internal Server Error", statusCode = 500, logging = false, errors }: ParamsType) {
+    constructor({ message = "Something went wrong on the server", statusCode = 500, logging = false, errors, }: ParamsType) {
         super(message);
         this.statusCode = statusCode;
         this.logging = logging;
