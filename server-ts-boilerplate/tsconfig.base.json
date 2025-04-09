@@ -21,19 +21,16 @@
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
-        "strictFunctionTypes": true,
-        "noImplicitAny": true,
-        "strictBindCallApply": true,
-        "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
 
         /* Path Resolution */
         "baseUrl": "./src",
         "paths": {
             "@/*": ["*"]
         },
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+
+        /* Production-Ready Defaults */
+        "removeComments": true,
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]

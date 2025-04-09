@@ -1,9 +1,14 @@
 {
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        /* Production optimizations */
-        "removeComments": true,
-        "typeRoots": ["./node_modules/@types", "./src/@types"]
-    },
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
 
+        "strictFunctionTypes": true,
+        "noImplicitAny": true,
+        "strictBindCallApply": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+
+    }
 }
