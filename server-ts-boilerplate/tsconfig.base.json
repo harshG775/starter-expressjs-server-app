@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        /* Core Configuration */
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "types": ["node"],
+
+        /* Modern ESM Configuration */
+        "target": "ES2022",
+        "lib": ["ES2022"],
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
+
+        /* Module Interop */
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+
+        /* Essential Type Checking */
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictFunctionTypes": true,
+        "noImplicitAny": true,
+        "strictBindCallApply": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+
+        /* Path Resolution */
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": ["*"]
+        },
+        "resolveJsonModule": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+}

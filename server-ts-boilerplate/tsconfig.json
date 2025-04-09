@@ -1,37 +1,9 @@
 {
+    "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        /* Basic Configuration */
-        "rootDir": "./src", // <- in
-        "outDir": "./dist", // <- out
+        /* Production optimizations */
         "removeComments": true,
-
-        /* Latest ESM Configuration */
-        "target": "ES2022", // <- out
-        "lib": ["ES2022"], // <- in
-        "moduleResolution": "NodeNext", // <- in
-        "module": "NodeNext", // <- out
-
-        /* Strict Type-Checking */
-        "strict": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-
-        /* ESM/Node Specifics */
-        "types": ["node"],
-        "resolveJsonModule": true,
-        "forceConsistentCasingInFileNames": true,
-        "typeRoots": [
-            "./node_modules/@types",
-            "./src/@types"
-        ],
-
-        /* Paths */
-        "baseUrl": "./src",
-        "paths": {
-            "@/*": ["*"]
-        }
+        "typeRoots": ["./node_modules/@types", "./src/@types"]
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "dist"]
+
 }
