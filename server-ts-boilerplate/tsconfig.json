@@ -1,49 +1,37 @@
 {
     "compilerOptions": {
-        /* Base Configuration */
-        "target": "ES2022",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "sourceMap": false,
-        "declaration": false,
+        /* Basic Configuration */
+        "rootDir": "./src", // <- in
+        "outDir": "./dist", // <- out
+        "removeComments": true,
+
+        /* Latest ESM Configuration */
+        "target": "ES2022", // <- out
+        "lib": ["ES2022"], // <- in
+        "moduleResolution": "NodeNext", // <- in
+        "module": "NodeNext", // <- out
 
         /* Strict Type-Checking */
         "strict": true,
         "noImplicitAny": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "strictBindCallApply": true,
-        "noImplicitThis": true,
-        "alwaysStrict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
 
-        /* Module Handling */
-        "esModuleInterop": true,
+        /* ESM/Node Specifics */
+        "types": ["node"],
         "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/@types"
+        ],
 
         /* Paths */
         "baseUrl": "./src",
         "paths": {
             "@/*": ["*"]
-        },
-
-        /* ESM/Node Specifics */
-        "types": ["node"],
-        "typeRoots": ["./node_modules/@types", "./src/@types/index.d.ts"],
-        "forceConsistentCasingInFileNames": true,
-
-        /* Source Maps & Diagnostics */
-        "inlineSources": false,
-        "diagnostics": true,
-
-        // ...
-        "skipLibCheck": true,
-        "removeComments": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true
+        }
     },
-    "include": ["src/**/*"],
+    "include": ["src"],
     "exclude": ["node_modules", "dist"]
 }
