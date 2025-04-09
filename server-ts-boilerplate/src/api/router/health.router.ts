@@ -4,8 +4,16 @@ const healthRouter = Router();
 
 import { z } from "zod";
 import { registry } from "@/api-docs/index.js";
+const HealthCheckResponseSchema = z.object({
+    success: z.boolean(),
+    message: z.string(),
+    status: z.number(),
+    environment: z.string(),
+    uptime: z.number(),
+    timestamp: z.string(),
+});
 registry.registerPath({
-    path: "/health",
+    path: "/api/v1.0.0/health",
     method: "get",
     summary: "Health check endpoint",
     responses: {
@@ -13,14 +21,7 @@ registry.registerPath({
             description: "System health status",
             content: {
                 "application/json": {
-                    schema: z.object({
-                        success: z.boolean(),
-                        message: z.string(),
-                        status: z.number(),
-                        environment: z.string(),
-                        uptime: z.number(),
-                        timestamp: z.string(),
-                    }),
+                    schema: HealthCheckResponseSchema,
                 },
             },
         },

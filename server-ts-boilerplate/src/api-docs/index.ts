@@ -9,7 +9,7 @@ export const openApiConfig = {
         title: "Your API",
         version: "1.0.0",
     },
-    servers: [{ url: "http://localhost:3000" }],
+    // servers: [{ url: "http://localhost:3000" }],
     externalDocs: {
         description: "View the raw OpenAPI Specification in JSON format",
         url: "/openapi.json",
